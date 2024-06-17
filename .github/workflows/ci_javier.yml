@@ -11,12 +11,20 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
 
-      - name: Install NodeJS
+      - name: Set up NodeJS
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
       - name: Install dependencies
+        run: npm install
+        working-directory: ./react-javier
+
+      - name: Generate package-lock.json
+        run: npm install --package-lock-only
+        working-directory: ./react-javier
+
+      - name: Install dependencies using npm ci
         run: npm ci
         working-directory: ./react-javier
 
