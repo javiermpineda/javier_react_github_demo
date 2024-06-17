@@ -12,8 +12,11 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v3
 
-    - name: List files in the working directory
+    - name: List files in the root directory
       run: ls -la
+
+    - name: List files in the javier_react_github_demo directory (if exists)
+      run: ls -la javier_react_github_demo
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -22,12 +25,12 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      working-directory: ./javier_react_github_demo
+      working-directory: javier_react_github_demo
 
     - name: Run tests
       run: npm test
-      working-directory: ./javier_react_github_demo
+      working-directory: javier_react_github_demo
 
     - name: Build the project
       run: npm run build
-      working-directory: ./javier_react_github_demo
+      working-directory: javier_react_github_demo
