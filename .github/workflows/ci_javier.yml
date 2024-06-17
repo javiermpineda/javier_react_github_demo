@@ -17,11 +17,17 @@ jobs:
       with:
         node-version: '18'
 
+    - name: Change to the project directory
+      run: cd javier_react_github_demo
+
     - name: Install dependencies
       run: npm install
+      working-directory: javier_react_github_demo
 
     - name: Run tests
       run: npm test
+      working-directory: javier_react_github_demo
 
     - name: Build the project
       run: npm run build
+      working-directory: javier_react_github_demo
