@@ -1,36 +1,29 @@
-name: Node.js CI
+name: Test Project
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Check out the repository
-      uses: actions/checkout@v3
+      - name: Get code
+        uses: actions/checkout@v3
 
-    - name: List files in the root directory
-      run: ls -la
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-    - name: List files in the javier_react_github_demo directory (if exists)
-      run: ls -la javier_react_github_demo
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./my_project
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Run tests
+        run: npm test
+        working-directory: ./my_project
 
-    - name: Install dependencies
-      run: npm install
-      working-directory: javier_react_github_demo
-
-    - name: Run tests
-      run: npm test
-      working-directory: javier_react_github_demo
-
-    - name: Build the project
-      run: npm run build
-      working-directory: javier_react_github_demo
+      - name: Build the project
+        run: npm run build
+        working-directory: ./my_project
