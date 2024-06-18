@@ -16,6 +16,12 @@ jobs:
         with:
           node-version: 18
 
+      - name: Check Node.js version
+        run: node -v
+
+      - name: Check npm version
+        run: npm -v
+
       - name: List files in the root directory
         run: ls -la
 
@@ -33,8 +39,8 @@ jobs:
         run: npm run
         working-directory: ./react-javier
 
-      - name: Run tests
-        run: npm test || npm run test
+      - name: Run Vitest directly
+        run: npx vitest run
         working-directory: ./react-javier
 
       - name: Build the project
