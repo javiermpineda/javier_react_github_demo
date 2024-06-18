@@ -28,6 +28,12 @@ jobs:
       - name: List files in the react-javier directory
         run: ls -la ./react-javier
 
+      - name: List files in the src directory
+        run: ls -la ./react-javier/src
+
+      - name: List files in the test directory (if it exists)
+        run: ls -la ./react-javier/src/test || echo "No test directory found"
+
       - name: Show package.json content
         run: cat ./react-javier/package.json
 
