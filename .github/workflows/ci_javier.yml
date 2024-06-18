@@ -1,4 +1,4 @@
-name: Test Javier
+name: Test Project
 
 on:
   push:
@@ -18,6 +18,10 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./react-javier
+
+      - name: List npm scripts
+        run: npm run
         working-directory: ./react-javier
 
       - name: Run tests
