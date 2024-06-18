@@ -16,6 +16,27 @@ jobs:
         with:
           node-version: 18
 
+      - name: Check Node.js version
+        run: node -v
+
+      - name: Check npm version
+        run: npm -v
+
+      - name: List files in the root directory
+        run: ls -la
+
+      - name: List files in the react-javier directory
+        run: ls -la ./react-javier
+
+      - name: List files in the src directory
+        run: ls -la ./react-javier/src
+
+      - name: List files in the test directory (if it exists)
+        run: ls -la ./react-javier/src/test || echo "No test directory found"
+
+      - name: Show package.json content
+        run: cat ./react-javier/package.json
+
       - name: Install dependencies
         run: npm install
         working-directory: ./react-javier
@@ -24,8 +45,8 @@ jobs:
         run: npm run
         working-directory: ./react-javier
 
-      - name: Run tests
-        run: npm test
+      - name: Run Vitest directly
+        run: npx vitest run
         working-directory: ./react-javier
 
       - name: Build the project
